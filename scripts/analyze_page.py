@@ -304,8 +304,6 @@ class MarketingPageParser(HTMLParser):
 def fetch_page(url):
     """Fetch a webpage and return its HTML content."""
     ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -340,8 +338,6 @@ def fetch_sitemap(url):
     sitemap_url = f"{parsed.scheme}://{parsed.netloc}/sitemap.xml"
     try:
         ctx = ssl.create_default_context()
-        ctx.check_hostname = False
-        ctx.verify_mode = ssl.CERT_NONE
         req = urllib.request.Request(sitemap_url, headers={"User-Agent": "MarketingBot/1.0"})
         response = urllib.request.urlopen(req, timeout=10, context=ctx)
         content = response.read().decode("utf-8", errors="replace")

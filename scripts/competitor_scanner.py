@@ -175,8 +175,6 @@ class CompetitorPageParser(HTMLParser):
 def fetch_page(url):
     """Fetch a webpage."""
     ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
